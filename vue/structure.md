@@ -16,8 +16,6 @@ src/
     router/
       index.ts
       routes.ts
-    stores/
-      app.store.ts
   assets/
   components/
     base/
@@ -29,7 +27,6 @@ src/
       composables/
       constants/
       services/
-      stores/
       types/
       views/
     users/
@@ -37,10 +34,13 @@ src/
       composables/
       constants/
       services/
-      stores/
       types/
       views/
   services/
+  stores/
+    app.store.ts
+    auth.store.ts
+    users.store.ts
   types/
   utils/
 ```
@@ -109,15 +109,17 @@ Types that only support one component or service can stay in the same file until
 
 ## Pinia Stores
 
-Use Pinia stores for state that is shared across routes, features, or distant component trees.
+Use Pinia stores for state that is shared across routes, features, or distant component trees. Keep store files together in `src/stores` so the application has one obvious store repository.
 
-- Use `features/<feature>/stores` for feature-owned stores.
-- Use `app/stores` or `stores` for cross-cutting application stores.
+- Use `src/stores` for all Pinia stores.
+- Split stores by related data set or domain scope, such as `app.store.ts`, `auth.store.ts`, `users.store.ts`, and `projects.store.ts`.
+- Prefer several focused stores over one large store. A store should own related data and actions only.
+- Avoid creating stores for tiny local state that belongs inside one view, component, or composable.
 - Name store files with a `.store.ts` suffix, such as `auth.store.ts`.
 - Name store functions with the `use` prefix, such as `useAuthStore()`.
 - Keep server-cache behavior, form-local state, and purely presentational state out of global stores unless there is a clear sharing requirement.
 
-A store should expose a stable domain API. Components should not need to know the internal shape of every state field to perform common actions.
+A store should expose a stable domain API. Components should not need to know the internal shape of every state field to perform common actions. If one store starts mixing unrelated concerns, split it into smaller stores with clearer ownership.
 
 ## Router
 
@@ -170,17 +172,16 @@ features/<feature>/
   composables/
   constants/
   services/
-  stores/
   types/
   views/
   <feature>.routes.ts
 ```
 
-This structure is useful when a feature has route-level screens, shared domain state, API access, and several internal components. For smaller features, start with fewer folders and split files only when the boundaries become meaningful.
+This structure is useful when a feature has route-level screens, API access, and several internal components. Place shared route or feature state in `src/stores` using a focused store file rather than adding feature-local store folders. For smaller features, start with fewer folders and split files only when the boundaries become meaningful.
 
 ## Import Boundaries
 
-- Feature code may import from shared folders such as `components/base`, `services`, `types`, `utils`, and `constants`.
+- Feature code may import from shared folders such as `components/base`, `services`, `stores`, `types`, `utils`, and `constants`.
 - Shared folders should not import from feature folders.
 - One feature should not reach into another feature's internals. If behavior is genuinely shared, promote it to a shared folder or expose it through an intentional feature API.
 - Avoid circular dependencies between stores, services, and composables.
