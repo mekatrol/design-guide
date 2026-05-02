@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Local environment files
+*.local
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# TypeScript and tooling caches
+*.tsbuildinfo
+.eslintcache
+.vite/
+*.timestamp-*-*.mjs
+
+# Test output
+__screenshots__/
+cypress/videos/
+cypress/screenshots/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -4,6 +4,10 @@ This guide defines the Vue-specific conventions used for building clear, accessi
 
 Use it as the starting point for Vue application design decisions, component structure, styling patterns, accessibility expectations, and review criteria.
 
+## Related Guides
+
+- [Vue Project Structure](structure.md)
+
 ## Scope
 
 The Vue style guide covers:
