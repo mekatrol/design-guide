@@ -7,6 +7,7 @@ Use it as the starting point for Vue application design decisions, component str
 ## Related Guides
 
 - [Vue Project Structure](structure.md)
+- [Vue 404 Handling](404handling.md)
 
 ## Scope
 
