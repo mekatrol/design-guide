@@ -93,6 +93,9 @@ Constants should be named and scoped by ownership.
 - Use `constants` for shared values used across features.
 - Prefer specific filenames such as `user-roles.constants.ts` or `route-names.constants.ts`.
 - Keep constants immutable and free of runtime side effects.
+- Do not use magic strings for domain values, route names, route paths, store ids, status checks, or other control-flow values.
+- Use named string constants or typed constant objects instead of repeated string literals. Derive union types from those constants where practical.
+- Keep string constants in a shared constants folder when they are used across files. Use file-local constants only for values that are specific to one file.
 
 Avoid turning constants files into miscellaneous dumping grounds. If a value belongs to a component, store, or service only, keep it nearby.
 
@@ -181,6 +184,10 @@ This structure is useful when a feature has route-level screens, API access, and
 
 ## Import Boundaries
 
+- Use the `@/` alias for application imports from `src`, such as `@/features/users/services/users.mapper`.
+- Use relative `./` imports only for nearby local files, especially sibling components or files in the same folder.
+- Prefer named, destructured imports over namespace or default imports when the module exports named members.
+- Keep imports specific to the API being used, such as `import { toUserListItem } from '@/features/users/services/users.mapper'`.
 - Feature code may import from shared folders such as `components/base`, `services`, `stores`, `types`, `utils`, and `constants`.
 - Shared folders should not import from feature folders.
 - One feature should not reach into another feature's internals. If behavior is genuinely shared, promote it to a shared folder or expose it through an intentional feature API.

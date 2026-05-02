@@ -1,4 +1,7 @@
-export type UserRole = 'Admin' | 'Editor' | 'Viewer'
+import type { UserRole } from '@/features/users/constants/user-roles.constants'
+import type { UserStatus } from '@/features/users/constants/user-statuses.constants'
+
+export type { UserRole, UserStatus }
 
 export interface User {
   id: number
@@ -6,7 +9,7 @@ export interface User {
   email: string
   role: UserRole
   projects: number
-  status: 'active' | 'invited'
+  status: UserStatus
 }
 
 export interface UserListItem {

@@ -1,12 +1,15 @@
 import { computed, ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 
+import { APP_PRODUCT_NAME } from '@/constants/app.constants'
+
 interface PersistedAppState {
   activeWorkspace: string
   visitCount: number
 }
 
 const STORAGE_KEY = 'structure-example:app-store'
+const APP_STORE_ID = 'app'
 const WORKSPACES = ['Design Systems', 'Product Platform', 'Research Ops'] as const
 
 function readPersistedState(): PersistedAppState {
@@ -31,9 +34,9 @@ function readPersistedState(): PersistedAppState {
   }
 }
 
-export const useAppStore = defineStore('app', () => {
+export const useAppStore = defineStore(APP_STORE_ID, () => {
   const persistedState = readPersistedState()
-  const productName = ref('Structure Example')
+  const productName = ref(APP_PRODUCT_NAME)
   const activeWorkspace = ref(persistedState.activeWorkspace)
   const visitCount = ref(persistedState.visitCount)
   const workspaces = ref<string[]>([...WORKSPACES])

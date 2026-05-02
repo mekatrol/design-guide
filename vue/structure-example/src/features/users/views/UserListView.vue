@@ -3,12 +3,17 @@ import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 
 import BaseButton from '@/components/base/BaseButton.vue'
+import { USER_ROLES } from '@/features/users/constants/user-roles.constants'
+import { useUserSearch } from '@/features/users/composables/useUserSearch'
 import { useAppStore } from '@/stores/app.store'
 import { useUsersStore } from '@/stores/users.store'
 
 import UserListTable from '../components/UserListTable.vue'
-import { USER_ROLES } from '../constants/user-roles.constants'
-import { useUserSearch } from '../composables/useUserSearch'
+
+const LOAD_USERS_BUTTON_LABEL = {
+  LOADING: 'Loading',
+  REFRESH: 'Refresh',
+} as const
 
 const usersStore = useUsersStore()
 const appStore = useAppStore()
@@ -35,7 +40,7 @@ onMounted(() => {
       </div>
 
       <BaseButton :disabled="isLoading" @click="usersStore.loadUsers">
-        {{ isLoading ? 'Loading' : 'Refresh' }}
+        {{ isLoading ? LOAD_USERS_BUTTON_LABEL.LOADING : LOAD_USERS_BUTTON_LABEL.REFRESH }}
       </BaseButton>
     </div>
 

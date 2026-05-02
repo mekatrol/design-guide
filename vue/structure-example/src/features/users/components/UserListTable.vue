@@ -2,8 +2,7 @@
 import { RouterLink } from 'vue-router'
 
 import { ROUTE_NAMES } from '@/constants/route-names.constants'
-
-import type { UserListItem } from '../types/user.types'
+import type { UserListItem } from '@/features/users/types/user.types'
 
 defineProps<{
   users: UserListItem[]

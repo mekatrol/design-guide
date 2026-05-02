@@ -1,6 +1,6 @@
 import { computed, ref, type Ref } from 'vue'
 
-import type { UserListItem } from '../types/user.types'
+import type { UserListItem } from '@/features/users/types/user.types'
 
 export function useUserSearch(users: Ref<UserListItem[]>) {
   const searchTerm = ref('')

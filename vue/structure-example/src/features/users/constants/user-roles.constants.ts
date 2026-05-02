@@ -1,3 +1,9 @@
-import type { UserRole } from '@/features/users/types/user.types'
+export const USER_ROLE = {
+  ADMIN: 'Admin',
+  EDITOR: 'Editor',
+  VIEWER: 'Viewer',
+} as const
 
-export const USER_ROLES: UserRole[] = ['Admin', 'Editor', 'Viewer']
+export const USER_ROLES = Object.values(USER_ROLE)
+
+export type UserRole = (typeof USER_ROLE)[keyof typeof USER_ROLE]

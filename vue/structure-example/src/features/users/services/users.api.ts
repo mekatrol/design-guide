@@ -1,31 +1,33 @@
 import { readJson } from '@/services/http.service'
 
-import type { User } from '../types/user.types'
+import { USER_ROLE } from '@/features/users/constants/user-roles.constants'
+import { USER_STATUS } from '@/features/users/constants/user-statuses.constants'
+import type { User } from '@/features/users/types/user.types'
 
 const USERS: User[] = [
   {
     id: 1,
     name: 'Avery Stone',
     email: 'avery@example.test',
-    role: 'Admin',
+    role: USER_ROLE.ADMIN,
     projects: 14,
-    status: 'active',
+    status: USER_STATUS.ACTIVE,
   },
   {
     id: 2,
     name: 'Morgan Lee',
     email: 'morgan@example.test',
-    role: 'Editor',
+    role: USER_ROLE.EDITOR,
     projects: 7,
-    status: 'active',
+    status: USER_STATUS.ACTIVE,
   },
   {
     id: 3,
     name: 'Sam Rivera',
     email: 'sam@example.test',
-    role: 'Viewer',
+    role: USER_ROLE.VIEWER,
     projects: 2,
-    status: 'invited',
+    status: USER_STATUS.INVITED,
   },
 ]
 

@@ -3,9 +3,8 @@ import { computed, onMounted, ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 
 import { ROUTE_NAMES } from '@/constants/route-names.constants'
-
-import { getUser } from '../services/users.api'
-import type { User } from '../types/user.types'
+import { getUser } from '@/features/users/services/users.api'
+import type { User } from '@/features/users/types/user.types'
 
 const route = useRoute()
 const user = ref<User>()
