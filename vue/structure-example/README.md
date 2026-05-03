@@ -41,6 +41,47 @@ npm run dev
 npm run build
 ```
 
+### Format Code
+
+```sh
+npm run format
+```
+
+Formatting uses `oxfmt` with these rules:
+
+- Semicolons are required.
+- Trailing commas are not allowed.
+- Single quotes are required.
+
+### Lint Code
+
+```sh
+npm run lint
+```
+
+Linting uses ESLint flat config with JavaScript, TypeScript, and Vue recommended rules. The project also enforces these local rules:
+
+- Promise rejections must use `Error` objects.
+- Lines must be 200 characters or less, except lines matching `^\s*\/`.
+- Strings must use single quotes.
+- Template literals are only allowed when interpolation is needed.
+- `require` usage is allowed for plain CommonJS modules.
+- `debugger` is only an error in production.
+- `console` is a warning in development and an error in production. `console.warn` and `console.error` are allowed.
+- Core `no-unused-vars` is disabled so TypeScript-aware unused variable checking is used instead.
+- `var` is not allowed.
+- Arrow functions are required for callbacks.
+- Function declarations are not allowed. Use `const name = (...) => ...`.
+- Unused variables are errors, but `_` and underscore-prefixed arguments are allowed.
+- Function return types are required.
+
+The Vue formatting-style lint rules that conflict with `oxfmt` are disabled:
+
+- `vue/html-closing-bracket-newline`
+- `vue/html-self-closing`
+- `vue/max-attributes-per-line`
+- `vue/singleline-html-element-content-newline`
+
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
