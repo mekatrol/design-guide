@@ -38,11 +38,21 @@ export const useAppStore = defineStore(APP_STORE_ID, () => {
   const persistedState = readPersistedState();
   const productName = ref(APP_PRODUCT_NAME);
   const activeWorkspace = ref(persistedState.activeWorkspace);
+  const busyCount = ref(0);
   const visitCount = ref(persistedState.visitCount);
   const workspaces = ref<string[]>([...WORKSPACES]);
 
+  const isBusy = computed(() => busyCount.value > 0);
   const title = computed(() => `${productName.value} - ${activeWorkspace.value}`);
   const visitSummary = computed(() => `${visitCount.value} route visits saved`);
+
+  const incrementBusy = (): void => {
+    busyCount.value += 1;
+  };
+
+  const decrementBusy = (): void => {
+    busyCount.value = Math.max(0, busyCount.value - 1);
+  };
 
   const setActiveWorkspace = (workspace: string): void => {
     activeWorkspace.value = workspace;
@@ -68,6 +78,10 @@ export const useAppStore = defineStore(APP_STORE_ID, () => {
 
   return {
     activeWorkspace,
+    busyCount,
+    decrementBusy,
+    incrementBusy,
+    isBusy,
     productName,
     recordRouteVisit,
     setActiveWorkspace,
