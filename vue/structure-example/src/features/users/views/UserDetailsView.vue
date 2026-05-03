@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { computed, onMounted, ref } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
 
-import { ROUTE_NAMES } from '@/constants/route-names.constants'
-import { getUser } from '@/features/users/services/users.api'
-import type { User } from '@/features/users/types/user.types'
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
+import { getUser } from '@/features/users/services/users.api';
+import type { User } from '@/features/users/types/user.types';
 
-const route = useRoute()
-const user = ref<User>()
-const userId = computed(() => Number(route.params.id))
+const route = useRoute();
+const user = ref<User>();
+const userId = computed(() => Number(route.params.id));
 
 onMounted(async () => {
-  user.value = await getUser(userId.value)
-})
+  user.value = await getUser(userId.value);
+});
 </script>
 
 <template>

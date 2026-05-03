@@ -1,1 +1,1 @@
-export const APP_PRODUCT_NAME = 'Structure Example'
+export const APP_PRODUCT_NAME = 'Structure Example';

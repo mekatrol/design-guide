@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
 
-import BaseButton from '@/components/base/BaseButton.vue'
-import { USER_ROLES } from '@/features/users/constants/user-roles.constants'
-import { useUserSearch } from '@/features/users/composables/useUserSearch'
-import { useAppStore } from '@/stores/app.store'
-import { useUsersStore } from '@/stores/users.store'
+import BaseButton from '@/components/base/BaseButton.vue';
+import { USER_ROLES } from '@/features/users/constants/user-roles.constants';
+import { useUserSearch } from '@/features/users/composables/useUserSearch';
+import { useAppStore } from '@/stores/app.store';
+import { useUsersStore } from '@/stores/users.store';
 
-import UserListTable from '../components/UserListTable.vue'
+import UserListTable from '../components/UserListTable.vue';
 
 const LOAD_USERS_BUTTON_LABEL = {
   LOADING: 'Loading',
-  REFRESH: 'Refresh',
-} as const
+  REFRESH: 'Refresh'
+} as const;
 
-const usersStore = useUsersStore()
-const appStore = useAppStore()
-const { activeUserCount, isLoading, userItems } = storeToRefs(usersStore)
-const { filteredUsers, searchTerm } = useUserSearch(userItems)
+const usersStore = useUsersStore();
+const appStore = useAppStore();
+const { activeUserCount, isLoading, userItems } = storeToRefs(usersStore);
+const { filteredUsers, searchTerm } = useUserSearch(userItems);
 
 onMounted(() => {
   if (userItems.value.length === 0) {
-    void usersStore.loadUsers()
+    void usersStore.loadUsers();
   }
-})
+});
 </script>
 
 <template>

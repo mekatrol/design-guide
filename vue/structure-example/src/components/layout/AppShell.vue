@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { watch } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { watch } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
 
-import { ROUTE_NAMES } from '@/constants/route-names.constants'
-import { useAppStore } from '@/stores/app.store'
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
+import { useAppStore } from '@/stores/app.store';
 
-const appStore = useAppStore()
-const route = useRoute()
+const appStore = useAppStore();
+const route = useRoute();
 
 watch(
   () => route.fullPath,
   () => {
-    appStore.recordRouteVisit()
+    appStore.recordRouteVisit();
   },
-  { immediate: true },
-)
+  { immediate: true }
+);
 </script>
 
 <template>

@@ -1,7 +1,7 @@
-import type { ApiEnvelope } from '@/types/api.types'
+import type { ApiEnvelope } from '@/types/api.types';
 
 export async function readJson<TData>(data: TData): Promise<ApiEnvelope<TData>> {
-  await new Promise((resolve) => window.setTimeout(resolve, 120))
+  await new Promise((resolve) => window.setTimeout(resolve, 120));
 
-  return { data }
+  return { data };
 }

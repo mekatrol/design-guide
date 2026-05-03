@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAppStore } from '@/stores/app.store'
+import { useAppStore } from '@/stores/app.store';
 
-const appStore = useAppStore()
+const appStore = useAppStore();
 </script>
 
 <template>
@@ -13,8 +13,8 @@ const appStore = useAppStore()
       not to a single feature folder.
     </p>
     <p>
-      Current workspace: <strong>{{ appStore.activeWorkspace }}</strong>.
-      {{ appStore.visitSummary }}.
+      Current workspace: <strong>{{ appStore.activeWorkspace }}</strong
+      >. {{ appStore.visitSummary }}.
     </p>
   </section>
 </template>

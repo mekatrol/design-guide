@@ -1,12 +1,12 @@
-import { formatNumber } from '@/utils/formatters'
+import { formatNumber } from '@/utils/formatters';
 
-import { USER_STATUS } from '@/features/users/constants/user-statuses.constants'
-import type { User, UserListItem, UserStatus } from '@/features/users/types/user.types'
+import { USER_STATUS } from '@/features/users/constants/user-statuses.constants';
+import type { User, UserListItem, UserStatus } from '@/features/users/types/user.types';
 
 const USER_STATUS_LABELS: Record<UserStatus, string> = {
   [USER_STATUS.ACTIVE]: 'Active',
-  [USER_STATUS.INVITED]: 'Invited',
-}
+  [USER_STATUS.INVITED]: 'Invited'
+};
 
 export function toUserListItem(user: User): UserListItem {
   return {
@@ -15,6 +15,6 @@ export function toUserListItem(user: User): UserListItem {
     email: user.email,
     role: user.role,
     projectSummary: `${formatNumber(user.projects)} projects`,
-    statusLabel: USER_STATUS_LABELS[user.status],
-  }
+    statusLabel: USER_STATUS_LABELS[user.status]
+  };
 }

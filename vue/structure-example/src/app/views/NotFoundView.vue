@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router';
 
-import { ROUTE_NAMES } from '@/constants/route-names.constants'
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
 
-const route = useRoute()
+const route = useRoute();
 </script>
 
 <template>
   <section class="not-found-view">
     <p class="eyebrow">404</p>
     <h2>Page Not Found</h2>
-    <p>No route matched <code>{{ route.fullPath }}</code>.</p>
+    <p>
+      No route matched <code>{{ route.fullPath }}</code
+      >.
+    </p>
     <RouterLink :to="{ name: ROUTE_NAMES.DASHBOARD }">Go to dashboard</RouterLink>
   </section>
 </template>

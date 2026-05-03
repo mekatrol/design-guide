@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink } from 'vue-router';
 
-import { ROUTE_NAMES } from '@/constants/route-names.constants'
-import { useAppStore } from '@/stores/app.store'
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
+import { useAppStore } from '@/stores/app.store';
 
-const appStore = useAppStore()
+const appStore = useAppStore();
 </script>
 
 <template>
@@ -12,9 +12,7 @@ const appStore = useAppStore()
     <div>
       <p class="eyebrow">Default route target</p>
       <h2>Dashboard</h2>
-      <p>
-        The root path redirects here so the router example has a visible default destination.
-      </p>
+      <p>The root path redirects here so the router example has a visible default destination.</p>
     </div>
 
     <section class="store-panel" aria-labelledby="store-panel-title">

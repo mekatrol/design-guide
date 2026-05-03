@@ -4,5 +4,5 @@ export const ROUTE_PATHS = {
   HOME: '/',
   NOT_FOUND: '/:pathMatch(.*)*',
   USERS: '/users',
-  USER_DETAILS: '/users/:id',
-} as const
+  USER_DETAILS: '/users/:id'
+} as const;

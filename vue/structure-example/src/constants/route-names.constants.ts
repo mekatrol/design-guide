@@ -4,5 +4,5 @@ export const ROUTE_NAMES = {
   HOME: 'home',
   NOT_FOUND: 'not-found',
   USERS: 'users',
-  USER_DETAILS: 'user-details',
-} as const
+  USER_DETAILS: 'user-details'
+} as const;
