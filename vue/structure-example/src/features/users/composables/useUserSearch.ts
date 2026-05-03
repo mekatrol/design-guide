@@ -7,7 +7,7 @@ interface UserSearchState {
   searchTerm: Ref<string>;
 }
 
-export function useUserSearch(users: Ref<UserListItem[]>): UserSearchState {
+export const useUserSearch = (users: Ref<UserListItem[]>): UserSearchState => {
   const searchTerm = ref('');
 
   const filteredUsers = computed(() => {
@@ -26,4 +26,4 @@ export function useUserSearch(users: Ref<UserListItem[]>): UserSearchState {
     filteredUsers,
     searchTerm
   };
-}
+};

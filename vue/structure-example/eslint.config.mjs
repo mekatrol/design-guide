@@ -45,6 +45,8 @@ export default tseslint.config(
       ],
       'no-unused-vars': 'off',
       'no-var': 'error',
+      'prefer-arrow-callback': 'error',
+      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
       '@typescript-eslint/no-unused-vars': [
         'error',
         {

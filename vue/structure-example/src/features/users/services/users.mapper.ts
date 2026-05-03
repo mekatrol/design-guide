@@ -8,7 +8,7 @@ const USER_STATUS_LABELS: Record<UserStatus, string> = {
   [USER_STATUS.INVITED]: 'Invited'
 };
 
-export function toUserListItem(user: User): UserListItem {
+export const toUserListItem = (user: User): UserListItem => {
   return {
     id: user.id,
     name: user.name,
@@ -17,4 +17,4 @@ export function toUserListItem(user: User): UserListItem {
     projectSummary: `${formatNumber(user.projects)} projects`,
     statusLabel: USER_STATUS_LABELS[user.status]
   };
-}
+};

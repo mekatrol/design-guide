@@ -17,7 +17,7 @@ export const useUsersStore = defineStore(USERS_STORE_ID, () => {
     () => users.value.filter((user) => user.status === USER_STATUS.ACTIVE).length
   );
 
-  async function loadUsers(): Promise<void> {
+  const loadUsers = async (): Promise<void> => {
     isLoading.value = true;
 
     try {
@@ -25,7 +25,7 @@ export const useUsersStore = defineStore(USERS_STORE_ID, () => {
     } finally {
       isLoading.value = false;
     }
-  }
+  };
 
   return {
     activeUserCount,

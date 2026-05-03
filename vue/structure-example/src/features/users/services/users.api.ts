@@ -31,14 +31,14 @@ const USERS: User[] = [
   }
 ];
 
-export async function listUsers(): Promise<User[]> {
+export const listUsers = async (): Promise<User[]> => {
   const response = await readJson(USERS);
 
   return response.data;
-}
+};
 
-export async function getUser(userId: number): Promise<User | undefined> {
+export const getUser = async (userId: number): Promise<User | undefined> => {
   const response = await readJson(USERS.find((user) => user.id === userId));
 
   return response.data;
-}
+};
