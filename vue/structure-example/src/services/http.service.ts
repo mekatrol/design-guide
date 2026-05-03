@@ -2,6 +2,7 @@ import { readonly, ref } from 'vue';
 
 import { useAppStore } from '@/stores/app.store';
 import type { ApiEnvelope } from '@/types/api.types';
+import { combineUrl, getApiBaseUrl, isAbsoluteHttpUrl } from '@/utils/url';
 
 export enum ApiErrorType {
   Undefined = 0,
@@ -73,7 +74,7 @@ export class ApiRequestError extends Error {
 
 export const defaultConfig: Required<Pick<HttpRequestConfig, 'headers' | 'timeout'>> &
   Pick<HttpRequestConfig, 'baseUrl'> = {
-  baseUrl: import.meta.env.VITE_API_BASE_URL,
+  baseUrl: getApiBaseUrl(),
   timeout: 50000,
   headers: {
     Accept: 'application/json',
@@ -293,11 +294,11 @@ const withBusyState = async <TResult>(callback: () => Promise<TResult>): Promise
 };
 
 const buildUrl = (url: string): string => {
-  if (!defaultConfig.baseUrl || /^https?:\/\//u.test(url)) {
+  if (isAbsoluteHttpUrl(url)) {
     return url;
   }
 
-  return `${defaultConfig.baseUrl.replace(/\/$/u, '')}/${url.replace(/^\//u, '')}`;
+  return combineUrl(defaultConfig.baseUrl ?? '', url);
 };
 
 const buildHeaders = (url: string): Headers => {
