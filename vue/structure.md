@@ -76,6 +76,11 @@ Services contain integration code and side-effectful operations.
 - Use `services` for shared infrastructure services, such as HTTP clients, telemetry, authentication transport, or storage adapters.
 - Keep services framework-light where practical. A service should usually be importable from TypeScript without depending on a component instance.
 - Do not hide UI state in services. Return data and errors clearly, then let views, stores, or composables decide how to present them.
+- Centralize HTTP transport behavior in a shared service, such as `services/http.service.ts`, instead of repeating `fetch`, headers, timeout, retry, and API error handling in feature services.
+- Feature API services should expose domain-specific functions and delegate transport details to the shared HTTP service.
+- Keep authentication token lookup configurable when practical. The HTTP service may accept token provider callbacks, but it should not own authentication state directly.
+- Shared request state, such as a global busy counter, belongs in an app-level store. The HTTP service can increment and decrement that counter, but components should read the state from the store.
+- Do not keep multiple competing transport clients in the same app unless there is a clear migration boundary. Prefer one shared HTTP service over parallel `fetch` and Axios wrappers.
 
 Example:
 
@@ -155,6 +160,7 @@ Composables contain reusable stateful logic.
 - Name files and functions with the `use` prefix, such as `usePagination.ts` and `usePagination()`.
 - Keep composables focused on one concern.
 - Avoid making composables implicit service locators. Dependencies should be visible through imports or parameters.
+- Route-aware workflow composables, such as login/logout helpers, may coordinate services, stores, and router navigation. Keep the service layer free of router dependencies so the flow remains testable.
 
 ## Utilities
 
@@ -164,6 +170,8 @@ Utilities are small, framework-light helper functions.
 - Use feature-local utility files when helpers only make sense inside one feature.
 - Keep utilities deterministic where possible.
 - Do not put API calls, store mutations, or UI side effects in utility files.
+- Put URL composition and URL normalization helpers in `utils`, such as `utils/url.ts`, rather than embedding ad hoc string manipulation in services.
+- Runtime configuration readers are acceptable in utilities when the utility owns the concern, such as reading an injected API base URL from the document and falling back to a Vite environment variable.
 
 ## Feature Folder Checklist
 

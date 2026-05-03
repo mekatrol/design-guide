@@ -1,7 +1,11 @@
 import { computed, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 
+import { useLocalSessionJsonObject } from '@/composables/useLocalSession';
 import { APP_PRODUCT_NAME } from '@/constants/app.constants';
+import type { AccessToken, AuthenticatedUser } from '@/types/auth.types';
+
+export const TOKEN_SESSION_KEY = 'structure-example:auth-token';
 
 interface PersistedAppState {
   activeWorkspace: string;
@@ -41,8 +45,11 @@ export const useAppStore = defineStore(APP_STORE_ID, () => {
   const busyCount = ref(0);
   const visitCount = ref(persistedState.visitCount);
   const workspaces = ref<string[]>([...WORKSPACES]);
+  const userToken = ref<AccessToken | undefined>();
+  const user = ref<AuthenticatedUser | undefined>();
 
   const isBusy = computed(() => busyCount.value > 0);
+  const isAuthenticated = computed(() => userToken.value !== undefined);
   const title = computed(() => `${productName.value} - ${activeWorkspace.value}`);
   const visitSummary = computed(() => `${visitCount.value} route visits saved`);
 
@@ -62,6 +69,27 @@ export const useAppStore = defineStore(APP_STORE_ID, () => {
     visitCount.value += 1;
   };
 
+  const setUserToken = (token: AccessToken | undefined, rememberMe: boolean): void => {
+    const persistSettings = useLocalSessionJsonObject<AccessToken>(TOKEN_SESSION_KEY);
+
+    userToken.value = token;
+
+    if (rememberMe && !!token) {
+      persistSettings.setting = token;
+    } else {
+      persistSettings.remove();
+    }
+  };
+
+  const setUser = (authenticatedUser: AuthenticatedUser | undefined): void => {
+    user.value = authenticatedUser;
+  };
+
+  const clearUser = (): void => {
+    user.value = undefined;
+    setUserToken(undefined, false);
+  };
+
   watch(
     [activeWorkspace, visitCount],
     () => {
@@ -79,8 +107,10 @@ export const useAppStore = defineStore(APP_STORE_ID, () => {
   return {
     activeWorkspace,
     busyCount,
+    clearUser,
     decrementBusy,
     incrementBusy,
+    isAuthenticated,
     isBusy,
     productName,
     recordRouteVisit,
@@ -88,6 +118,10 @@ export const useAppStore = defineStore(APP_STORE_ID, () => {
     title,
     visitCount,
     visitSummary,
-    workspaces
+    workspaces,
+    user,
+    userToken,
+    setUser,
+    setUserToken
   };
 });
