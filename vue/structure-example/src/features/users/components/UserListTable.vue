@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { RouterLink } from 'vue-router';
-
-import { ROUTE_NAMES } from '@/constants/route-names.constants';
-import type { UserListItem } from '@/features/users/types/user.types';
-
-defineProps<{
-  users: UserListItem[];
-}>();
-</script>
-
 <template>
   <table class="users-table">
     <thead>
@@ -36,6 +25,17 @@ defineProps<{
     </tbody>
   </table>
 </template>
+
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
+import type { UserListItem } from '@/features/users/types/user.types';
+
+defineProps<{
+  users: UserListItem[];
+}>();
+</script>
 
 <style scoped>
 .users-table {

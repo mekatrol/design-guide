@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import { watch } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
-
-import { ROUTE_NAMES } from '@/constants/route-names.constants';
-import { useAppStore } from '@/stores/app.store';
-
-const appStore = useAppStore();
-const route = useRoute();
-
-watch(
-  () => route.fullPath,
-  () => {
-    appStore.recordRouteVisit();
-  },
-  { immediate: true }
-);
-</script>
-
 <template>
   <div class="app-shell">
     <header class="app-header">
@@ -37,6 +18,25 @@ watch(
     </main>
   </div>
 </template>
+
+<script setup lang="ts">
+import { watch } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
+
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
+import { useAppStore } from '@/stores/app.store';
+
+const appStore = useAppStore();
+const route = useRoute();
+
+watch(
+  () => route.fullPath,
+  () => {
+    appStore.recordRouteVisit();
+  },
+  { immediate: true }
+);
+</script>
 
 <style scoped>
 .app-shell {

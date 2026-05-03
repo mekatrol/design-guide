@@ -66,7 +66,13 @@ export default tseslint.config(
       'vue/html-closing-bracket-newline': 'off',
       'vue/html-self-closing': 'off',
       'vue/max-attributes-per-line': 'off',
-      'vue/singleline-html-element-content-newline': 'off'
+      'vue/singleline-html-element-content-newline': 'off',
+      'vue/block-order': [
+        'error',
+        {
+          order: ['template', 'script', 'style']
+        }
+      ]
     }
   }
 );

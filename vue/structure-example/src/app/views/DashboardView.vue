@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { RouterLink } from 'vue-router';
-
-import { ROUTE_NAMES } from '@/constants/route-names.constants';
-import { useAppStore } from '@/stores/app.store';
-
-const appStore = useAppStore();
-</script>
-
 <template>
   <section class="dashboard-view">
     <div>
@@ -59,6 +50,15 @@ const appStore = useAppStore();
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
+import { useAppStore } from '@/stores/app.store';
+
+const appStore = useAppStore();
+</script>
 
 <style scoped>
 .dashboard-view {

@@ -1,14 +1,14 @@
-<script setup lang="ts">
-defineProps<{
-  disabled?: boolean;
-}>();
-</script>
-
 <template>
   <button class="base-button" :disabled="disabled">
     <slot />
   </button>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+  disabled?: boolean;
+}>();
+</script>
 
 <style scoped>
 .base-button {

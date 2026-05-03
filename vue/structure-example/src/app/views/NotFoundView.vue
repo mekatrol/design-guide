@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, useRoute } from 'vue-router';
-
-import { ROUTE_NAMES } from '@/constants/route-names.constants';
-
-const route = useRoute();
-</script>
-
 <template>
   <section class="not-found-view">
     <p class="eyebrow">404</p>
@@ -17,6 +9,14 @@ const route = useRoute();
     <RouterLink :to="{ name: ROUTE_NAMES.DASHBOARD }">Go to dashboard</RouterLink>
   </section>
 </template>
+
+<script setup lang="ts">
+import { RouterLink, useRoute } from 'vue-router';
+
+import { ROUTE_NAMES } from '@/constants/route-names.constants';
+
+const route = useRoute();
+</script>
 
 <style scoped>
 .not-found-view {

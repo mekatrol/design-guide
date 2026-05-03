@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { useAppStore } from '@/stores/app.store';
-
-const appStore = useAppStore();
-</script>
-
 <template>
   <section class="content-view">
     <p class="eyebrow">App route</p>
@@ -18,6 +12,12 @@ const appStore = useAppStore();
     </p>
   </section>
 </template>
+
+<script setup lang="ts">
+import { useAppStore } from '@/stores/app.store';
+
+const appStore = useAppStore();
+</script>
 
 <style scoped>
 .content-view {

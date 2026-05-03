@@ -52,6 +52,9 @@ The Vue style guide covers:
 ## Project Organization
 
 - Use PascalCase for component filenames, such as `UserProfileCard.vue`. This matches how components are referenced in JavaScript and TypeScript.
+- Use role suffixes only when the suffix identifies an architectural layer, such as `app.store.ts`, `auth.service.ts`, or `users.api.ts`.
+- Do not add redundant suffixes inside folders that already define the role. Prefer `utils/url.ts` over `utils/url.util.ts`.
+- Name composable files with the `use` prefix, such as `useLogin.ts`, to match the exported composable function.
 - Prefix globally shared base components with `Base`, `App`, or `V`, such as `BaseButton.vue`.
 - Group large applications by feature instead of by technical type. Prefer paths such as `features/auth/components` and `features/profile/components` over one global components folder.
 
