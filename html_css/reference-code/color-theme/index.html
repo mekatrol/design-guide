@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Color theme reference</title>
+    <script>
+      const theme = localStorage.getItem("theme");
+      if (theme === "light" || theme === "dark") {
+        document.documentElement.dataset.theme = theme;
+      }
+    </script>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="card" aria-labelledby="theme-title">
+        <p class="eyebrow">HTML and CSS design guide</p>
+        <h1 id="theme-title">Light and dark themes</h1>
+        <p class="description">
+          The system preference is the default. Choose an override and refresh
+          the page to confirm that the explicit choice is persisted.
+        </p>
+
+        <label for="theme-select">Color theme</label>
+        <select id="theme-select">
+          <option value="system">Use system setting</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </section>
+    </main>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

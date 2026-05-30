@@ -6,4 +6,5 @@ Each guide is organized by technology area and focuses on conventions that teams
 
 ## Guides
 
+- [HTML and CSS Design Guide](html_css/readme.md)
 - [Vue Style Guide](vue/readme.md)

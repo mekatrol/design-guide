@@ -1,0 +1,115 @@
+:root {
+  color-scheme: light dark;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --color-surface: #f7f7fb;
+  --color-surface-raised: #ffffff;
+  --color-text: #1b1b20;
+  --color-text-muted: #555562;
+  --color-border: #c9c9d2;
+  --color-accent: #5755d9;
+  --color-shadow: rgb(38 38 50 / 14%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #17171c;
+    --color-surface-raised: #222229;
+    --color-text: #f4f4f7;
+    --color-text-muted: #b4b4c0;
+    --color-border: #44444f;
+    --color-accent: #aaa8ff;
+    --color-shadow: rgb(0 0 0 / 35%);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-surface: #f7f7fb;
+  --color-surface-raised: #ffffff;
+  --color-text: #1b1b20;
+  --color-text-muted: #555562;
+  --color-border: #c9c9d2;
+  --color-accent: #5755d9;
+  --color-shadow: rgb(38 38 50 / 14%);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-surface: #17171c;
+  --color-surface-raised: #222229;
+  --color-text: #f4f4f7;
+  --color-text-muted: #b4b4c0;
+  --color-border: #44444f;
+  --color-accent: #aaa8ff;
+  --color-shadow: rgb(0 0 0 / 35%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.page-shell {
+  display: grid;
+  min-block-size: 100vh;
+  padding: 1.5rem;
+  place-items: center;
+}
+
+.card {
+  inline-size: min(100%, 36rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface-raised);
+  box-shadow: 0 1rem 2.5rem var(--color-shadow);
+}
+
+.eyebrow {
+  margin-block: 0 0.75rem;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-block: 0;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1;
+}
+
+.description {
+  margin-block: 1.25rem 2rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+label {
+  display: block;
+  margin-block-end: 0.5rem;
+  font-weight: 700;
+}
+
+select {
+  inline-size: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  font: inherit;
+}
+
+select:focus-visible {
+  outline: 0.2rem solid var(--color-accent);
+  outline-offset: 0.2rem;
+}
