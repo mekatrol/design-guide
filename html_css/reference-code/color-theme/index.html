@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <title>Color theme reference</title>
     <script>
-      const theme = localStorage.getItem("theme");
-      if (theme === "light" || theme === "dark") {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'light' || theme === 'dark') {
         document.documentElement.dataset.theme = theme;
       }
     </script>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <main class="page-shell">
@@ -19,8 +19,8 @@
         <p class="eyebrow">HTML and CSS design guide</p>
         <h1 id="theme-title">Light and dark themes</h1>
         <p class="description">
-          The system preference is the default. Choose an override and refresh
-          the page to confirm that the explicit choice is persisted.
+          The system preference is the default. Choose an override and refresh the page to confirm
+          that the explicit choice is persisted.
         </p>
 
         <label for="theme-select">Color theme</label>
