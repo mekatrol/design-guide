@@ -12,5 +12,5 @@
     "noEmit": true,
     "strict": true
   },
-  "include": ["main.ts"]
+  "include": ["assets/scripts/main.ts"]
 }

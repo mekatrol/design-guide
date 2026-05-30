@@ -54,7 +54,7 @@ Use light values as the base, apply the system dark preference with a media quer
 }
 ```
 
-The abbreviated override blocks above illustrate the cascade. In production, override the complete token set, as shown in the [reference stylesheet](reference-code/color-theme/styles.css).
+The abbreviated override blocks above illustrate the cascade. In production, override the complete token set, as shown in the [reference stylesheet](reference-code/color-theme/assets/css/styles.css).
 
 Set an initial color-scheme hint before loading CSS:
 
