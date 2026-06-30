@@ -1,1 +1,1 @@
-export { default as DgButton } from './components/DgButton.vue';
+export { default as CoreButton } from './components/CoreButton.vue';

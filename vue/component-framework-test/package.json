@@ -9,8 +9,8 @@
     "preview": "vite preview harness --open",
     "test:unit": "vitest",
     "lint": "eslint .",
-    "format:check": "oxfmt --check ui/ harness/",
-    "format": "oxfmt ui/ harness/"
+    "format:check": "oxfmt --check ui/ harness/index.html harness/src/ harness/vite.config.ts",
+    "format": "oxfmt ui/ harness/index.html harness/src/ harness/vite.config.ts"
   },
   "dependencies": {
     "vue": "^3.5.17"

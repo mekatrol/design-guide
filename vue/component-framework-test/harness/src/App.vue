@@ -4,13 +4,13 @@
       <p class="eyebrow">Harness</p>
       <h1>Component test page</h1>
       <div class="component-row">
-        <DgButton />
-        <DgButton label="Imported from ui" />
+        <CoreButton />
+        <CoreButton label="Imported from ui" />
       </div>
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { DgButton } from '@ui';
+import { CoreButton } from '@ui';
 </script>

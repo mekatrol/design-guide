@@ -11,6 +11,10 @@ component-framework-test/
   ui/
     src/
       components/
+      css/
+        core.css
+        reset.css
+        theme.css
       index.ts
 
   harness/
@@ -24,6 +28,12 @@ component-framework-test/
 ```
 
 `ui/` contains reusable Vue components and public exports.
+
+The UI CSS files are also public framework entry points:
+
+- `css/reset.css` normalizes common browser defaults.
+- `css/theme.css` defines light and dark theme color tokens.
+- `css/core.css` defines shared UI framework styles.
 
 `harness/` is a local Vite app used to render, inspect, debug, and test components during development.
 
@@ -50,6 +60,7 @@ vite harness --open
 ```
 
 The harness app imports UI components through the `@ui` alias configured in `harness/vite.config.ts`.
+It also imports the public framework CSS files directly from `ui/src`.
 
 ## Add A Component
 
@@ -68,18 +79,18 @@ ui/src/index.ts
 Example:
 
 ```ts
-export { default as DgButton } from './components/DgButton.vue';
+export { default as CoreButton } from './components/CoreButton.vue';
 ```
 
 Use it in the harness:
 
 ```vue
 <template>
-  <DgButton label="Save changes" />
+  <CoreButton label="Save changes" />
 </template>
 
 <script setup lang="ts">
-import { DgButton } from '@ui';
+import { CoreButton } from '@ui';
 </script>
 ```
 
@@ -230,5 +241,19 @@ resolve: {
 Import components from the public UI export:
 
 ```ts
-import { DgButton } from '@ui';
+import { CoreButton } from '@ui';
+```
+
+Import the framework CSS once from the consuming app entry file. Keep this order so reset styles load first, theme tokens load before components use them, and core component styles load before app-specific overrides:
+
+```ts
+import '@ui/css/reset.css';
+import '@ui/css/theme.css';
+import '@ui/css/core.css';
+```
+
+The default theme is light. Set `data-theme="dark"` or `data-theme="light"` on the document root to choose a theme explicitly:
+
+```ts
+document.documentElement.dataset.theme = 'dark';
 ```

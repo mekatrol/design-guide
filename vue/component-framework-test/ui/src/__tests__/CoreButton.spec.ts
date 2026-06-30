@@ -1,17 +1,17 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
-import DgButton from '../components/DgButton.vue';
+import CoreButton from '../components/CoreButton.vue';
 
-describe('DgButton', () => {
+describe('CoreButton', () => {
   it('renders the default label', () => {
-    const wrapper = mount(DgButton);
+    const wrapper = mount(CoreButton);
 
     expect(wrapper.text()).toContain('Framework button');
   });
 
   it('renders a custom label', () => {
-    const wrapper = mount(DgButton, {
+    const wrapper = mount(CoreButton, {
       props: {
         label: 'Save changes'
       }

@@ -1,0 +1,42 @@
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+.dg-core-button {
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  border: 1px solid var(--dg-color-border-strong);
+  border-radius: 6px;
+  background: var(--dg-color-surface);
+  color: var(--dg-color-text);
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.dg-core-button:hover {
+  background: var(--dg-color-surface-muted);
+}
+
+.dg-core-button:focus-visible {
+  outline: 0;
+  box-shadow: var(--dg-shadow-focus);
+}
+
+.dg-core-button:disabled,
+.dg-core-button[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
