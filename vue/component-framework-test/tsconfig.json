@@ -1,0 +1,17 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "env.d.ts",
+    "framework/**/*.ts",
+    "framework/**/*.vue",
+    "harness/**/*.ts",
+    "harness/**/*.vue"
+  ],
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.tsbuildinfo",
+    "paths": {
+      "@framework": ["./framework/src/index.ts"],
+      "@framework/*": ["./framework/src/*"]
+    }
+  }
+}
