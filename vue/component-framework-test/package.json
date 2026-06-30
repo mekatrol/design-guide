@@ -7,6 +7,7 @@
     "dev": "vite harness --open",
     "build": "vue-tsc --noEmit && vite build harness",
     "preview": "vite preview harness --open",
+    "test:unit": "vitest",
     "lint": "eslint .",
     "format": "oxfmt framework/ harness/"
   },
@@ -18,14 +19,17 @@
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^24.12.2",
     "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.9.1",
     "eslint": "^10.3.0",
     "eslint-plugin-vue": "^10.9.0",
+    "jsdom": "^29.0.2",
     "oxfmt": "^0.45.0",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.59.1",
     "vite": "^8.0.8",
     "vite-plugin-vue-devtools": "^8.1.1",
+    "vitest": "^4.1.4",
     "vue-eslint-parser": "^10.4.0",
     "vue-tsc": "^3.2.6"
   }
