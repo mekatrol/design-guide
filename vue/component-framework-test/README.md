@@ -2,13 +2,13 @@
 
 This project is a Vue component framework scaffold with a separate Vite harness app for local development and debugging.
 
-The framework source is intentionally kept separate from the harness app so the reusable components can be included in other Vue projects by git submodule, subtree, or another source-code sharing approach.
+The UI source is intentionally kept separate from the harness app so the reusable components can be included in other Vue projects by git submodule, subtree, or another source-code sharing approach.
 
 ## Project Layout
 
 ```text
 component-framework-test/
-  framework/
+  ui/
     src/
       components/
       index.ts
@@ -23,7 +23,7 @@ component-framework-test/
   eslint.config.mjs
 ```
 
-`framework/` contains reusable Vue components and public exports.
+`ui/` contains reusable Vue components and public exports.
 
 `harness/` is a local Vite app used to render, inspect, debug, and test components during development.
 
@@ -49,20 +49,20 @@ This runs:
 vite harness --open
 ```
 
-The harness app imports framework components through the `@framework` alias configured in `harness/vite.config.ts`.
+The harness app imports UI components through the `@ui` alias configured in `harness/vite.config.ts`.
 
 ## Add A Component
 
 Create a component under:
 
 ```text
-framework/src/components/
+ui/src/components/
 ```
 
 Export it from:
 
 ```text
-framework/src/index.ts
+ui/src/index.ts
 ```
 
 Example:
@@ -79,7 +79,7 @@ Use it in the harness:
 </template>
 
 <script setup lang="ts">
-import { DgButton } from '@framework';
+import { DgButton } from '@ui';
 </script>
 ```
 
@@ -97,7 +97,7 @@ npm run dev
 
 Then use the browser and Vue DevTools to inspect props, emitted events, component state, styling, and layout behavior.
 
-The harness should stay focused on development and debugging. Framework code should stay inside `framework/`.
+The harness should stay focused on development and debugging. UI framework code should stay inside `ui/`.
 
 ## Unit Tests
 
@@ -115,10 +115,10 @@ Run tests once:
 npm run test:unit -- --run
 ```
 
-Place framework component tests under:
+Place UI component tests under:
 
 ```text
-framework/src/__tests__/
+ui/src/__tests__/
 ```
 
 ## Lint And Format
@@ -155,13 +155,13 @@ The build output is generated under `harness/dist/` and is ignored by git.
 
 ## Using The Framework In Another Vue App
 
-Include this project in the consuming app by git submodule or similar. A git submodule is a good default because the consuming app records the exact framework commit it uses.
+Include this project in the consuming app by git submodule or similar. A git submodule is a good default because the consuming app records the exact UI framework commit it uses.
 
-From the consuming app repository, add this framework project as a submodule:
+From the consuming app repository, add this UI framework project as a submodule:
 
 ```sh
-git submodule add <framework-repository-url> src/vendor/component-framework-test
-git commit -m "Add component framework submodule"
+git submodule add <ui-framework-repository-url> src/vendor/component-framework-test
+git commit -m "Add UI framework submodule"
 ```
 
 That creates or updates two things in the consuming app:
@@ -171,7 +171,7 @@ That creates or updates two things in the consuming app:
 src/vendor/component-framework-test
 ```
 
-The submodule path is stored in the consuming app as a commit pointer. That commit pointer is the lock. Other developers and deployments will get the same framework version until the consuming app deliberately updates it.
+The submodule path is stored in the consuming app as a commit pointer. That commit pointer is the lock. Other developers and deployments will get the same UI framework version until the consuming app deliberately updates it.
 
 Clone a consuming app with submodules:
 
@@ -185,29 +185,29 @@ If the consuming app was already cloned:
 git submodule update --init --recursive
 ```
 
-Lock the consuming app to a specific framework commit:
+Lock the consuming app to a specific UI framework commit:
 
 ```sh
 cd src/vendor/component-framework-test
 git fetch
-git checkout <framework-commit-id>
+git checkout <ui-framework-commit-id>
 cd ../../..
 git add src/vendor/component-framework-test
-git commit -m "Lock component framework to <framework-commit-id>"
+git commit -m "Lock UI framework to <ui-framework-commit-id>"
 ```
 
-Update the consuming app to a newer framework commit:
+Update the consuming app to a newer UI framework commit:
 
 ```sh
 cd src/vendor/component-framework-test
 git fetch
-git checkout <new-framework-commit-id>
+git checkout <new-ui-framework-commit-id>
 cd ../../..
 git add src/vendor/component-framework-test
-git commit -m "Update component framework to <new-framework-commit-id>"
+git commit -m "Update UI framework to <new-ui-framework-commit-id>"
 ```
 
-Check which framework commit is currently locked:
+Check which UI framework commit is currently locked:
 
 ```sh
 git submodule status
@@ -220,15 +220,15 @@ Then add a Vite alias in the consuming app:
 ```ts
 resolve: {
   alias: {
-    '@framework': fileURLToPath(
-      new URL('./src/vendor/component-framework-test/framework/src', import.meta.url)
+    '@ui': fileURLToPath(
+      new URL('./src/vendor/component-framework-test/ui/src', import.meta.url)
     )
   }
 }
 ```
 
-Import components from the public framework export:
+Import components from the public UI export:
 
 ```ts
-import { DgButton } from '@framework';
+import { DgButton } from '@ui';
 ```

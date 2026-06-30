@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["framework/src/**/__tests__/*", "harness/src/**/__tests__/*", "env.d.ts"],
+  "include": ["ui/src/**/__tests__/*", "harness/src/**/__tests__/*", "env.d.ts"],
   "exclude": [],
   "compilerOptions": {
     "lib": [],

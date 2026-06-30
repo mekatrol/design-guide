@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@framework': fileURLToPath(new URL('../framework/src', import.meta.url))
+      '@ui': fileURLToPath(new URL('../ui/src', import.meta.url))
     }
   }
 });

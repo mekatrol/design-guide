@@ -5,12 +5,12 @@
       <h1>Component test page</h1>
       <div class="component-row">
         <DgButton />
-        <DgButton label="Imported from framework" />
+        <DgButton label="Imported from ui" />
       </div>
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { DgButton } from '@framework';
+import { DgButton } from '@ui';
 </script>
