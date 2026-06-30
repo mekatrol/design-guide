@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite harness --open",
-    "build": "vue-tsc --noEmit && vite build harness",
+    "build": "npm run lint && npm run format:check && vue-tsc --noEmit && vite build harness",
     "preview": "vite preview harness --open",
     "test:unit": "vitest",
     "lint": "eslint .",
+    "format:check": "oxfmt --check framework/ harness/",
     "format": "oxfmt framework/ harness/"
   },
   "dependencies": {
