@@ -7,6 +7,10 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "typescript", "vue"],
   "[javascript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
