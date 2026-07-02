@@ -1,12 +1,6 @@
 <template>
-  <div
-    :id="id"
-    class="dg-core-popover-panel"
-    :data-placement="placement"
-    :aria-label="contentLabel"
-    :popover="popoverMode"
-    role="dialog"
-  >
+  <div :id="id" class="popover-panel" :data-placement="placement" :aria-label="contentLabel" :popover="popoverMode"
+    role="dialog">
     <slot />
   </div>
 </template>
