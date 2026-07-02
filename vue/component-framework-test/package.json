@@ -13,7 +13,8 @@
     "format": "oxfmt ui/ harness/index.html harness/src/ harness/vite.config.ts"
   },
   "dependencies": {
-    "vue": "^3.5.17"
+    "vue": "^3.5.17",
+    "vue-router": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
