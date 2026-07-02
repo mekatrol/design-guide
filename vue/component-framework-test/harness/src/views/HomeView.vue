@@ -6,11 +6,15 @@
       <div class="component-row">
         <CoreButton />
         <CoreButton label="Imported from ui" />
+        <CoreExternalLink href="https://www.passports.gov.au/">
+          <CoreImage :src="logoDfatApoCentred" alt="Australian Passport Office" />
+        </CoreExternalLink>
       </div>
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { CoreButton } from '@ui';
+import logoDfatApoCentred from '@/assets/logo-dfat-apo-centred.svg';
+import { CoreButton, CoreExternalLink, CoreImage } from '@ui';
 </script>
